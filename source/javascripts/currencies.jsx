@@ -5,10 +5,11 @@ class Currencies extends React.Component {
   }
 
   tick() {
-    window.wealth += 1
-    this.setState((prevState) => ({
-      wealth: prevState.wealth + 1
-    }));
+    window.wealth += 1;
+    this.forceUpdate();
+    // this.setState((prevState) => ({
+    //   wealth: prevState.wealth + 1
+    // }));
   }
 
   componentDidMount() {
@@ -26,3 +27,9 @@ class Currencies extends React.Component {
   }
 }
 ReactDOM.render(<Currencies />, document.getElementById('currencies'));
+
+// Ideas:
+// * Window.Paper, which is a resource that will allow you to generate Blog Posts, which can create either Influence or Power. It does not translate directly to Money. (This is better than the "contributing to Open Source" or "Asking for Help on HFSE", since it's a bit of a stretch to apply them to corporations.) [Unnecessary since now Your Brand allows direct conversions.]
+// *Tooltips for the resources so users know exactly what each emoji stands for.
+
+// * Establish 'toasts' every time you do an action to indicate exactly what you're doing!

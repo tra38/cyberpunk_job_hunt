@@ -19,3 +19,4 @@ displayModal({ title: "Allow data collection?", content: "<p>Allowing us to coll
 window.wealth = 0;
 window.influence = 0;
 window.power = 0;
+window.paper = 0;
