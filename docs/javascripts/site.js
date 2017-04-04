@@ -659,7 +659,9 @@ class Currencies extends React.Component {
   }
 
   tick() {
-    window.wealth += 1;
+    window.wealth += window.wealthIncome;
+    window.influence += window.influenceIncome;
+    window.power += window.powerIncome;
     this.forceUpdate();
     // this.setState((prevState) => ({
     //   wealth: prevState.wealth + 1
@@ -739,6 +741,18 @@ generateConvertFunction = function(object) {
   }
 }
 
+generateIncomeFunction = function(object) {
+  var originalResource = object["originalResource"]
+  var newResource = object["newResource"]
+
+  var newResourceIncome = newResource + "Income"
+
+  return function() {
+    window[originalResource] -= object["oldResourceCost"]
+    window[newResourceIncome] += object["newResourceGain"]
+  }
+}
+
 
 actionArray = [
   {
@@ -761,11 +775,29 @@ actionArray = [
   {
     actionTitle: "Invent a Buzzword", actionDescription: "Buzzwords compress complicated ideologies into actionable frameworks that even developers can leverage. Convert 10🤔 to 7🤓.",
     customFunction: generateConvertFunction({originalResource: "influence", newResource: "power", oldResourceCost: 10, newResourceGain: 7})
+  },
+  {
+    actionTitle: "Create Software (with CoolTech)", actionDescription: "Build the brand new 'Software as a Service' using the latest cool technology. Costs 100🤓. Generates 1💰/tick.",
+    customFunction: generateIncomeFunction({originalResource: "power", newResource: "wealth", oldResourceCost: 100, newResourceGain: 1})
+  },
+  {
+    actionTitle: "Fund Research (in CoolTech)", actionDescription: "Sponsor research (i.e, promotional blog posts) into the latest cool technology. Costs 100💰. Generates 1🤔/tick.",
+    customFunction: generateIncomeFunction({originalResource: "wealth", newResource: "influence", oldResourceCost: 100, newResourceGain: 1})
+  },
+  {
+    actionTitle: "Train Junior Developers (to use CoolTech)", actionDescription: "CoolTech is the future...once you finish training the future, that is. Costs 100🤔. Generates 1🤓/tick.",
+    customFunction: generateIncomeFunction({originalResource: "influence", newResource: "power", oldResourceCost: 100, newResourceGain: 1})
   }
 ]
 
 
 ReactDOM.render(React.createElement(Actions, {items: actionArray}), document.getElementById('actions'));
+
+// Write Blog Posts -
+// 1) Write a Technical Blog Post (convert paper to power)
+// 2) Write a Cultural Blog Post (convert paper to influence)
+// 3) Write a Native Ad (convert paper to money)
+;
 // This is where it all goes :)
 // Performance Budget: 250kb, minified (idelaly also g-zipped)
 // If you exceed this budget, you must either
@@ -787,3 +819,7 @@ displayModal({ title: "Allow data collection?", content: "<p>Allowing us to coll
 window.wealth = 0;
 window.influence = 0;
 window.power = 0;
+
+window.wealthIncome = 1;
+window.influenceIncome = 0;
+window.powerIncome = 0;

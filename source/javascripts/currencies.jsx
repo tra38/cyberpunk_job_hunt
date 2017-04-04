@@ -5,7 +5,9 @@ class Currencies extends React.Component {
   }
 
   tick() {
-    window.wealth += 1;
+    window.wealth += window.wealthIncome;
+    window.influence += window.influenceIncome;
+    window.power += window.powerIncome;
     this.forceUpdate();
     // this.setState((prevState) => ({
     //   wealth: prevState.wealth + 1
