@@ -12,6 +12,7 @@
 //= require 'currencies'
 //= require 'action'
 //= require 'actions'
+//= require 'toasts'
 
 displayModal({ title: "Allow data collection?", content: "<p>Allowing us to collect data will let us get the information you want faster.</p>"})
 
@@ -19,7 +20,11 @@ displayModal({ title: "Allow data collection?", content: "<p>Allowing us to coll
 window.wealth = 0;
 window.influence = 0;
 window.power = 0;
+window.network = 0;
+window.whiteboard = 0;
 
-window.wealthIncome = 1;
+window.wealthIncome = 0;
 window.influenceIncome = 0;
-window.powerIncome = 0;
+window.powerIncome = 1;
+window.networkIncome = 0;
+window.whiteboardIncome = 0;

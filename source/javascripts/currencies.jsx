@@ -1,13 +1,15 @@
 class Currencies extends React.Component {
   constructor(props) {
     super(props);
-    this.props = { wealth: window.wealth, influence: window.influence, power: window.power}
+    this.props = { wealth: window.wealth, influence: window.influence, power: window.power, network: window.network, whiteboard: window.whiteboard }
   }
 
   tick() {
     window.wealth += window.wealthIncome;
     window.influence += window.influenceIncome;
     window.power += window.powerIncome;
+    window.network += window.networkIncome;
+    window.whiteboard += window.whiteboardIncome;
     this.forceUpdate();
     // this.setState((prevState) => ({
     //   wealth: prevState.wealth + 1
@@ -24,7 +26,7 @@ class Currencies extends React.Component {
 
   render() {
     return (
-      <div>💰: {window.wealth} | 🤔: {window.influence} | 🤓: {window.power}</div>
+      <div>💰: {window.wealth} | 🤔: {window.influence} | 🤓: {window.power} | 🤝: {window.network} | 📚: {window.whiteboard} </div>
     );
   }
 }
@@ -35,3 +37,6 @@ ReactDOM.render(<Currencies />, document.getElementById('currencies'));
 // *Tooltips for the resources so users know exactly what each emoji stands for.
 
 // * Establish 'toasts' every time you do an action to indicate exactly what you're doing!
+
+//Second Cycle, of transfer -> Power => Whiteboarding => Connections => Wealth
+//Second Cycle, of income -> Wealth => Connections => Whiteboarding => Power

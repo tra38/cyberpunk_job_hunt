@@ -15,7 +15,7 @@ var Currencies = (function (_React$Component) {
     _classCallCheck(this, Currencies);
 
     _get(Object.getPrototypeOf(Currencies.prototype), 'constructor', this).call(this, props);
-    this.props = { wealth: window.wealth, influence: window.influence, power: window.power };
+    this.props = { wealth: window.wealth, influence: window.influence, power: window.power, network: window.network, whiteboard: window.whiteboard };
   }
 
   _createClass(Currencies, [{
@@ -24,6 +24,8 @@ var Currencies = (function (_React$Component) {
       window.wealth += window.wealthIncome;
       window.influence += window.influenceIncome;
       window.power += window.powerIncome;
+      window.network += window.networkIncome;
+      window.whiteboard += window.whiteboardIncome;
       this.forceUpdate();
       // this.setState((prevState) => ({
       //   wealth: prevState.wealth + 1
@@ -54,7 +56,12 @@ var Currencies = (function (_React$Component) {
         ' | 🤔: ',
         window.influence,
         ' | 🤓: ',
-        window.power
+        window.power,
+        ' | 🤝: ',
+        window.network,
+        ' | 📚: ',
+        window.whiteboard,
+        ' '
       );
     }
   }]);
@@ -69,3 +76,6 @@ ReactDOM.render(React.createElement(Currencies, null), document.getElementById('
 // *Tooltips for the resources so users know exactly what each emoji stands for.
 
 // * Establish 'toasts' every time you do an action to indicate exactly what you're doing!
+
+//Second Cycle, of transfer -> Power => Whiteboarding => Connections => Wealth
+//Second Cycle, of income -> Wealth => Connections => Whiteboarding => Power
